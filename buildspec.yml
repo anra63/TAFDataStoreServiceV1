@@ -6,6 +6,7 @@ phases:
       - echo Giving permission
       - chmod +x ./gradlew
       - ./gradlew clean build
+      - ls -R build/
       - echo Logging in to Amazon ECR...
       - aws --version
       - REPOSITORY_URI=008971650574.dkr.ecr.us-east-2.amazonaws.com/tafdata-registry
