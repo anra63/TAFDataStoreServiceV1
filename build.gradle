@@ -1,0 +1,55 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.1'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Exclude logging-related dependencies
+	implementation('org.springframework.boot:spring-boot-starter') {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+
+	// Web API Starter
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// OpenAPI 3.0 integration for API documentation
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+
+	// JPA Starter for database interaction (Spring Data JPA)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// MySQL Connector for database interaction
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// Lombok for easier POJO and DTO creation (compile-time)
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// Spring Boot DevTools (for development purposes only)
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// Testing dependencies
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation 'org.hibernate.validator:hibernate-validator:6.2.0.Final'
+	implementation 'jakarta.validation:jakarta.validation-api:2.0.2'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
