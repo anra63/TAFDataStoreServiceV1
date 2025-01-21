@@ -6,7 +6,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the JAR file from the build/libs directory to the container's working directory
-COPY build/libs/TafDatastoreService-0.01-SNAPSHOT.jar /app/TafDatastoreService.jar
+COPY build/libs/TafDatastoreService-0.0.1-SNAPSHOT.jar /app/TafDatastoreService.jar
 
 # Expose the port the application will run on (8080)
 EXPOSE 8080
