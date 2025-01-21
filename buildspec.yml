@@ -3,6 +3,8 @@ version: 0.2
 phases:
   pre_build:
     commands:
+      - echo Giving permission
+      - chmod +x ./gradlew
       - ./gradlew clean build
       - echo Logging in to Amazon ECR...
       - aws --version
